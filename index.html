@@ -1,1311 +1,2780 @@
 <!doctype html>
 <html lang="pt-BR">
+
 <head>
+
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+
+<meta
+  name="viewport"
+  content="width=device-width,initial-scale=1,viewport-fit=cover"
+>
+
 <meta name="theme-color" content="#090306">
+
+<meta
+  name="application-name"
+  content="Pecado no Pote"
+>
+
+<meta
+  name="apple-mobile-web-app-capable"
+  content="yes"
+>
+
+<meta
+  name="apple-mobile-web-app-status-bar-style"
+  content="black-translucent"
+>
+
+<meta
+  name="apple-mobile-web-app-title"
+  content="Pecado no Pote"
+>
+
 <title>Pecado no Pote</title>
 
-<meta name="application-name" content="Pecado no Pote">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="Pecado no Pote">
+<link
+  rel="manifest"
+  href="manifest.webmanifest"
+>
 
-<link rel="manifest" href="manifest.webmanifest">
-<link rel="apple-touch-icon" href="icon-512.png">
+<link
+  rel="apple-touch-icon"
+  href="icon-512.png"
+>
+
 
 <style>
+
 :root{
+
   --bg:#080204;
   --card:#15070b;
   --card2:#1b080d;
+
   --red:#ff263f;
   --red2:#ff6575;
+
   --cream:#f8e9d3;
   --muted:#bcaeb0;
+
   --line:rgba(255,38,63,.30);
-  --green:#55f5aa
+
+  --green:#55f5aa;
+
 }
 
-*{box-sizing:border-box}
+
+*{
+  box-sizing:border-box;
+}
+
 
 html{
-  scroll-behavior:smooth
+  scroll-behavior:smooth;
 }
+
 
 body{
+
   margin:0;
+
   background:
-    radial-gradient(circle at 50% 0,rgba(255,38,63,.12),transparent 28%),
-    linear-gradient(#080204,#110307 55%,#080204);
+    radial-gradient(
+      circle at 50% 0,
+      rgba(255,38,63,.12),
+      transparent 28%
+    ),
+    linear-gradient(
+      #080204,
+      #110307 55%,
+      #080204
+    );
+
   color:#fff;
-  font-family:Arial,Helvetica,sans-serif;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
   -webkit-text-size-adjust:100%;
-  padding-bottom:env(safe-area-inset-bottom)
+
+  padding-bottom:
+    env(safe-area-inset-bottom);
+
 }
 
-button,input{
-  font:inherit
+
+button,
+input{
+  font:inherit;
 }
+
 
 .wrap{
+
   width:min(600px,100%);
+
   margin:auto;
-  padding:18px 14px 115px
+
+  padding:
+    18px
+    14px
+    115px;
+
 }
+
 
 .logo{
+
   width:min(300px,76vw);
+
   height:auto;
+
   display:block;
-  margin:4px auto 8px;
-  filter:drop-shadow(0 0 9px rgba(255,38,63,.25))
+
+  margin:
+    4px auto 8px;
+
+  filter:
+    drop-shadow(
+      0 0 9px
+      rgba(255,38,63,.25)
+    );
+
 }
+
 
 .intro{
+
   color:var(--muted);
+
   font-size:13px;
+
   line-height:1.45;
+
   text-align:center;
-  margin:12px auto 17px;
-  max-width:470px
+
+  margin:
+    12px auto 17px;
+
+  max-width:470px;
+
 }
+
 
 .install-app{
+
   display:none;
+
   width:100%;
-  margin:10px 0 14px;
-  border:1px solid var(--line);
+
+  margin:
+    10px 0 14px;
+
+  border:
+    1px solid var(--line);
+
   border-radius:12px;
+
   padding:11px;
+
   background:#120509;
+
   color:var(--cream);
+
   font-weight:900;
-  cursor:pointer
+
+  cursor:pointer;
+
 }
+
 
 .install-app.show{
-  display:block
+  display:block;
 }
+
 
 .confession{
-  background:linear-gradient(
-    145deg,
-    rgba(255,38,63,.09),
-    rgba(255,255,255,.025)
-  );
-  border:1px solid var(--line);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,38,63,.09),
+      rgba(255,255,255,.025)
+    );
+
+  border:
+    1px solid var(--line);
+
   border-radius:16px;
+
   padding:14px 15px;
-  margin-bottom:12px
+
+  margin-bottom:12px;
+
 }
+
 
 .conf-title{
+
   font-size:20px;
-  font-weight:900
+
+  font-weight:900;
+
 }
+
 
 .conf-sub{
+
   color:var(--muted);
-  margin-top:3px
+
+  margin-top:3px;
+
 }
 
-.name{
-  min-width:0
-}
 
 .name-input{
+
   margin-top:11px;
+
   width:100%;
-  border:1px solid var(--line);
+
+  border:
+    1px solid var(--line);
+
   border-radius:10px;
+
   padding:12px;
+
   background:#0b0305;
+
   color:#fff;
+
   font-size:15px;
-  outline:none
+
+  outline:none;
+
 }
+
 
 .name-input:focus{
+
   border-color:var(--red);
-  box-shadow:0 0 12px rgba(255,38,63,.2)
+
+  box-shadow:
+    0 0 12px
+    rgba(255,38,63,.2);
+
 }
+
 
 .tabs{
+
   position:sticky;
+
   top:0;
+
   z-index:10;
+
   display:grid;
-  grid-template-columns:repeat(3,1fr);
+
+  grid-template-columns:
+    repeat(3,1fr);
+
   gap:7px;
+
   padding:8px 0;
-  background:rgba(8,2,4,.91);
-  backdrop-filter:blur(10px)
+
+  background:
+    rgba(8,2,4,.91);
+
+  backdrop-filter:blur(10px);
+
 }
+
 
 .tab{
-  border:1px solid var(--line);
+
+  border:
+    1px solid var(--line);
+
   background:#120509;
+
   color:var(--cream);
+
   border-radius:12px;
+
   padding:10px 4px;
+
   font-weight:900;
+
   font-size:10px;
-  cursor:pointer
+
+  cursor:pointer;
+
 }
+
 
 .tab.active{
+
   border-color:var(--red);
-  box-shadow:0 0 15px rgba(255,38,63,.25)
+
+  box-shadow:
+    0 0 15px
+    rgba(255,38,63,.25);
+
 }
+
 
 .section{
-  display:none
+  display:none;
 }
+
 
 .section.active{
-  display:block
+  display:block;
 }
+
 
 .section h2{
+
   text-align:center;
-  margin:15px 0 4px;
-  font-size:22px
+
+  margin:
+    15px 0 4px;
+
+  font-size:22px;
+
 }
+
 
 .section p.sub{
+
   text-align:center;
+
   color:var(--muted);
+
   font-size:12px;
-  margin:0 0 14px
+
+  margin:
+    0 0 14px;
+
 }
+
 
 .item{
-  border:1px solid var(--line);
+
+  border:
+    1px solid var(--line);
+
   border-radius:17px;
-  background:linear-gradient(
-    145deg,
-    rgba(255,255,255,.045),
-    rgba(255,38,63,.025)
-  );
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,.045),
+      rgba(255,38,63,.025)
+    );
+
   margin:11px 0;
-  overflow:hidden
+
+  overflow:hidden;
+
 }
+
 
 .item-head{
+
   width:100%;
+
   display:flex;
+
   align-items:center;
+
   gap:10px;
+
   border:0;
+
   background:none;
+
   color:#fff;
+
   padding:16px;
+
   text-align:left;
-  cursor:pointer
+
+  cursor:pointer;
+
 }
+
 
 .emoji{
+
   font-size:25px;
+
   width:32px;
+
   text-align:center;
-  flex:none
+
+  flex:none;
+
 }
+
 
 .item-head .name{
+
   font-weight:900;
+
   font-size:17px;
-  flex:1
+
+  flex:1;
+
 }
+
 
 .price{
+
   font-weight:900;
+
   color:var(--red2);
-  white-space:nowrap
+
+  white-space:nowrap;
+
 }
+
 
 .arrow{
+
   color:#9d8d91;
+
   font-size:18px;
-  transition:.2s
+
+  transition:.2s;
+
 }
+
 
 .item.open .arrow{
-  transform:rotate(180deg)
+
+  transform:rotate(180deg);
+
 }
+
 
 .details{
+
   display:none;
-  padding:0 16px 16px 58px;
+
+  padding:
+    0 16px 16px 58px;
+
   color:#d6c9cb;
+
   font-size:14px;
-  line-height:1.52
+
+  line-height:1.52;
+
 }
+
 
 .item.open .details{
-  display:block
+  display:block;
 }
+
 
 .flavor{
+
   font-size:10px;
+
   letter-spacing:2px;
+
   text-transform:uppercase;
+
   color:#ffd17b;
-  font-weight:800
+
+  font-weight:800;
+
 }
+
 
 .details p{
-  margin:7px 0 0
+  margin:7px 0 0;
 }
+
 
 .add{
+
   width:100%;
+
   border:0;
+
   border-radius:10px;
+
   background:var(--red);
+
   color:#fff;
+
   padding:12px;
+
   margin-top:12px;
+
   font-weight:900;
-  cursor:pointer
+
+  cursor:pointer;
+
 }
+
 
 .bottom-note{
+
   text-align:center;
+
   color:#9e8f92;
+
   font-size:11px;
-  margin:20px 0 0
+
+  margin:20px 0 0;
+
 }
+
 
 .ml-badge{
+
   display:block;
+
   width:max-content;
-  margin:7px auto 0;
-  border:1px solid var(--red);
-  box-shadow:0 0 13px rgba(255,38,63,.2);
+
+  margin:
+    7px auto 0;
+
+  border:
+    1px solid var(--red);
+
+  box-shadow:
+    0 0 13px
+    rgba(255,38,63,.2);
+
   border-radius:999px;
+
   padding:7px 15px;
+
   color:#fff;
+
   font-size:12px;
+
   font-weight:900;
-  letter-spacing:1px
+
+  letter-spacing:1px;
+
 }
+
 
 .cart{
+
   position:fixed;
+
   z-index:20;
-  bottom:calc(12px + env(safe-area-inset-bottom));
+
+  bottom:
+    calc(
+      12px +
+      env(safe-area-inset-bottom)
+    );
+
   left:50%;
-  transform:translateX(-50%);
-  width:min(570px,calc(100% - 24px));
+
+  transform:
+    translateX(-50%);
+
+  width:
+    min(
+      570px,
+      calc(100% - 24px)
+    );
+
   display:flex;
+
   align-items:center;
+
   gap:11px;
+
   background:#fff;
+
   color:#120307;
+
   border-radius:17px;
+
   padding:12px 14px;
-  box-shadow:0 10px 40px #000;
-  cursor:pointer
+
+  box-shadow:
+    0 10px 40px #000;
+
+  cursor:pointer;
+
 }
+
 
 .cart-info{
-  flex:1
+  flex:1;
 }
+
 
 .cart-info b{
-  display:block
+  display:block;
 }
+
 
 .cart-info small{
-  color:#777
+  color:#777;
 }
+
 
 .cart-total{
-  font-weight:900
+  font-weight:900;
 }
+
 
 .modal{
+
   display:none;
+
   position:fixed;
+
   z-index:30;
+
   inset:0;
-  background:rgba(0,0,0,.79);
+
+  background:
+    rgba(0,0,0,.79);
+
   padding:14px;
+
   align-items:flex-end;
-  justify-content:center
+
+  justify-content:center;
+
 }
+
 
 .modal.show{
-  display:flex
+  display:flex;
 }
+
 
 .box{
-  width:min(570px,100%);
+
+  width:
+    min(570px,100%);
+
   max-height:86vh;
+
   overflow:auto;
+
   background:#17060a;
-  border:1px solid var(--red);
+
+  border:
+    1px solid var(--red);
+
   border-radius:22px;
+
   padding:19px;
-  box-shadow:0 0 35px rgba(255,38,63,.25)
+
+  box-shadow:
+    0 0 35px
+    rgba(255,38,63,.25);
+
 }
+
 
 .close{
+
   float:right;
-  border:1px solid var(--line);
+
+  border:
+    1px solid var(--line);
+
   background:#19070b;
+
   color:#fff;
+
   border-radius:9px;
-  padding:8px 12px
+
+  padding:8px 12px;
+
 }
+
 
 .box h2{
-  margin:0 0 4px
+  margin:0 0 4px;
 }
+
 
 .order-sub{
+
   color:var(--muted);
-  margin-bottom:15px
+
+  margin-bottom:15px;
+
 }
+
 
 .cart-row{
+
   display:flex;
+
   gap:10px;
+
   padding:11px 0;
-  border-bottom:1px solid rgba(255,255,255,.08)
+
+  border-bottom:
+    1px solid
+    rgba(255,255,255,.08);
+
 }
+
 
 .cart-row .desc{
-  flex:1
+  flex:1;
 }
+
 
 .qty{
+
   display:flex;
+
   align-items:center;
-  gap:8px
+
+  gap:8px;
+
 }
+
 
 .qty button{
-  border:1px solid var(--line);
+
+  border:
+    1px solid var(--line);
+
   background:#21080d;
+
   color:#fff;
+
   border-radius:8px;
-  padding:6px 10px
+
+  padding:6px 10px;
+
 }
+
 
 .order{
+
   width:100%;
+
   margin-top:16px;
+
   border:0;
+
   border-radius:12px;
+
   background:var(--green);
+
   color:#06160d;
+
   padding:14px;
+
   font-weight:900;
-  font-size:16px
+
+  font-size:16px;
+
 }
+
 
 .order:disabled{
-  opacity:.6
+  opacity:.6;
 }
+
 
 .empty{
+
   color:var(--muted);
+
   padding:20px 0;
-  text-align:center
+
+  text-align:center;
+
 }
+
 
 .whatsapp-floating{
+
   position:fixed;
+
   right:14px;
+
   bottom:86px;
+
   z-index:19;
+
   text-decoration:none;
+
   background:#25D366;
+
   color:#062d16;
+
   border-radius:999px;
+
   padding:11px 15px;
+
   font-weight:900;
-  box-shadow:0 8px 24px rgba(0,0,0,.35)
+
+  box-shadow:
+    0 8px 24px
+    rgba(0,0,0,.35);
+
 }
 
+
 @media(max-width:390px){
+
   .item-head .name{
-    font-size:15px
+    font-size:15px;
   }
 
   .details{
-    padding-left:16px
+    padding-left:16px;
   }
 
   .whatsapp-floating{
+
     right:10px;
+
     bottom:82px;
+
     padding:10px 12px;
-    font-size:12px
+
+    font-size:12px;
+
   }
+
 }
 
+
 @media(min-width:601px){
+
   body{
-    min-height:100vh
+    min-height:100vh;
   }
 
   .wrap{
-    padding-top:28px
+    padding-top:28px;
   }
+
 }
+
 </style>
+
 </head>
+
 
 <body>
 
+
 <div class="wrap">
 
-  <img class="logo" src="icon-512.png" alt="Pecado no Pote">
 
-  <p class="intro">
-    Seu pecado favorito, no pote. Escolha uma categoria,
-    conheça cada pecado e monte sua confissão.
-  </p>
+<img
+  class="logo"
+  src="icon-512.png"
+  alt="Pecado no Pote"
+>
 
-  <button id="installApp" class="install-app">
-    📲 INSTALAR APLICATIVO
-  </button>
 
-  <div class="confession">
+<p class="intro">
 
-    <div class="conf-title">
-      Confissão #<span id="confNumber">48</span>
-    </div>
+  Seu pecado favorito, no pote.
+  Escolha uma categoria,
+  conheça cada pecado
+  e monte sua confissão.
 
-    <div class="conf-sub">
-      Pecado do (a) <span id="namePreview">seu nome</span>
-    </div>
+</p>
 
-    <input
-      id="customerName"
-      class="name-input"
-      maxlength="60"
-      placeholder="Digite seu nome"
-      autocomplete="name"
-    >
+
+<button
+  id="installApp"
+  class="install-app"
+>
+
+  📲 INSTALAR APLICATIVO
+
+</button>
+
+
+<div class="confession">
+
+
+  <div class="conf-title">
+
+    Confissão #
+    <span id="confNumber">
+      56
+    </span>
 
   </div>
 
-  <nav class="tabs">
 
-    <button
-      class="tab active"
-      onclick="showTab('capitais',this)"
-    >
-      😈 CAPITAIS<br>R$ 16
-    </button>
+  <div class="conf-sub">
 
-    <button
-      class="tab"
-      onclick="showTab('perdoaveis',this)"
-    >
-      ✨ PERDOÁVEIS<br>R$ 18
-    </button>
+    Pecado do
+    <span id="namePreview">
+      seu nome
+    </span>
 
-    <button
-      class="tab"
-      onclick="showTab('tortos',this)"
-    >
-      🥧 TORTOS<br>R$ 20
-    </button>
+  </div>
 
-  </nav>
 
+  <input
+    id="customerName"
+    class="name-input"
+    maxlength="60"
+    placeholder="Digite seu nome"
+    autocomplete="name"
+  >
 
-  <section id="capitais" class="section active">
 
-    <h2>😈 Pecados Capitais</h2>
+</div>
 
-    <p class="sub">
-      Os clássicos. Os irresistíveis.
-    </p>
 
+<nav class="tabs">
 
-    <article class="item">
 
-      <button class="item-head" onclick="toggleItem(this)">
-        <span class="emoji">😴</span>
-        <span class="name">Preguiça Doce</span>
-        <span class="price">R$ 16</span>
-        <span class="arrow">⌄</span>
-      </button>
+<button
+  class="tab active"
+  onclick="showTab('capitais',this)"
+>
 
-      <div class="details">
+  😈 CAPITAIS
+  <br>
+  R$ 16
 
-        <div class="flavor">Coco</div>
+</button>
 
-        <p>
-          Dá uma preguiça até de pensar na dieta...
-          Mas tudo bem, esse pecado a gente perdoa!
-          Camada generosa de creme suave de Ninho,
-          combinado com coco ralado e uma cobertura
-          irresistível de ganache de chocolate meio amargo.
-        </p>
 
-        <button
-          class="add"
-          onclick="addItem('Preguiça Doce',16)"
-        >
-          COMETER ESTE PECADO
-        </button>
+<button
+  class="tab"
+  onclick="showTab('perdoaveis',this)"
+>
 
-      </div>
+  ✨ PERDOÁVEIS
+  <br>
+  R$ 18
 
-    </article>
+</button>
 
 
-    <article class="item">
+<button
+  class="tab"
+  onclick="showTab('tortos',this)"
+>
 
-      <button class="item-head" onclick="toggleItem(this)">
-        <span class="emoji">❤️</span>
-        <span class="name">Luxúria Vermelha</span>
-        <span class="price">R$ 16</span>
-        <span class="arrow">⌄</span>
-      </button>
+  🥧 TORTOS
+  <br>
+  R$ 20
 
-      <div class="details">
+</button>
 
-        <div class="flavor">Morango</div>
 
-        <p>
-          O clássico que é puro desejo proibido.
-          Uma quantidade farta de morangos de verdade,
-          envolvidos em um delicioso creme de Ninho
-          e chocolate meio amargo por cima.
-          Pecar nunca foi tão gostoso... Vai resistir?
-        </p>
+</nav>
 
-        <button
-          class="add"
-          onclick="addItem('Luxúria Vermelha',16)"
-        >
-          COMETER ESTE PECADO
-        </button>
 
-      </div>
+<section
+  id="capitais"
+  class="section active"
+>
 
-    </article>
 
+<h2>
+  😈 Pecados Capitais
+</h2>
 
-    <article class="item">
 
-      <button class="item-head" onclick="toggleItem(this)">
-        <span class="emoji">💰</span>
-        <span class="name">Avareza de Amendoim</span>
-        <span class="price">R$ 16</span>
-        <span class="arrow">⌄</span>
-      </button>
+<p class="sub">
+  Os clássicos. Os irresistíveis.
+</p>
 
-      <div class="details">
 
-        <div class="flavor">Amendoim</div>
+<article class="item">
 
-        <p>
-          Economizar dinheiro? Talvez.
-          Economizar doce? Jamais!
-          Uma dose daquelas de paçoca na base
-          cremosa de Ninho e finalizado por cima
-          com ganache de chocolate meio amargo.
-        </p>
 
-        <button
-          class="add"
-          onclick="addItem('Avareza de Amendoim',16)"
-        >
-          COMETER ESTE PECADO
-        </button>
+<button
+  class="item-head"
+  onclick="toggleItem(this)"
+>
 
-      </div>
+<span class="emoji">😴</span>
 
-    </article>
+<span class="name">
+  Preguiça Doce
+</span>
 
+<span class="price">
+  R$ 16
+</span>
 
-    <article class="item">
+<span class="arrow">
+  ⌄
+</span>
 
-      <button class="item-head" onclick="toggleItem(this)">
-        <span class="emoji">💚</span>
-        <span class="name">Inveja Verde</span>
-        <span class="price">R$ 16</span>
-        <span class="arrow">⌄</span>
-      </button>
+</button>
 
-      <div class="details">
 
-        <div class="flavor">Uva</div>
+<div class="details">
 
-        <p>
-          Quem não pedir vai chorar no cantinho!
-          Uvas verdes sem semente, crocantes e docinhas,
-          abraçadas por um incrível creme de Ninho
-          e finalizadas por cima com ganache
-          de chocolate meio amargo.
-        </p>
 
-        <button
-          class="add"
-          onclick="addItem('Inveja Verde',16)"
-        >
-          COMETER ESTE PECADO
-        </button>
+<div class="flavor">
+  Coco
+</div>
 
-      </div>
 
-    </article>
+<p>
 
+  Dá uma preguiça até de pensar
+  na dieta... Mas tudo bem,
+  esse pecado a gente perdoa!
+  Camada generosa de creme suave
+  de Ninho, combinado com coco
+  ralado e uma cobertura irresistível
+  de ganache de chocolate meio amargo.
 
-    <article class="item">
+</p>
 
-      <button class="item-head" onclick="toggleItem(this)">
-        <span class="emoji">🍫</span>
-        <span class="name">Gula de Chocolate</span>
-        <span class="price">R$ 16</span>
-        <span class="arrow">⌄</span>
-      </button>
 
-      <div class="details">
+<button
+  class="add"
+  onclick="addItem('Preguiça Doce',16)"
+>
 
-        <div class="flavor">Chocolate</div>
+  COMETER ESTE PECADO
 
-        <p>
-          Se é pecado, que seja dos grandes!
-          Creme de Ninho, muito chocolate e uma
-          cobertura intensa de ganache meio amargo.
-          Cremoso, chocolatudo e completamente
-          sem moderação.
-        </p>
+</button>
 
-        <button
-          class="add"
-          onclick="addItem('Gula de Chocolate',16)"
-        >
-          COMETER ESTE PECADO
-        </button>
 
-      </div>
+</div>
 
-    </article>
+</article>
 
-  </section>
 
+<article class="item">
 
-  <section id="perdoaveis" class="section">
 
-    <h2>✨ Pecados Perdoáveis</h2>
+<button
+  class="item-head"
+  onclick="toggleItem(this)"
+>
 
-    <p class="sub">
-      Porque alguns pecados a gente consegue justificar.
-    </p>
+<span class="emoji">
+  ❤️
+</span>
 
+<span class="name">
+  Luxúria Vermelha
+</span>
 
-    <article class="item">
+<span class="price">
+  R$ 16
+</span>
 
-      <button class="item-head" onclick="toggleItem(this)">
-        <span class="emoji">💛</span>
-        <span class="name">Amarelo do Prazer</span>
-        <span class="price">R$ 18</span>
-        <span class="arrow">⌄</span>
-      </button>
+<span class="arrow">
+  ⌄
+</span>
 
-      <div class="details">
+</button>
 
-        <div class="flavor">Maracujá</div>
 
-        <p>
-          Um pecado de aparência inocente, mas só de aparência...
-          Creme suave de Ninho, uma camada generosa de maracujá
-          e o equilíbrio perfeito entre o doce e aquele azedinho
-          irresistível.
-        </p>
+<div class="details">
 
-        <button
-          class="add"
-          onclick="addItem('Amarelo do Prazer',18)"
-        >
-          COMETER ESTE PECADO
-        </button>
 
-      </div>
+<div class="flavor">
+  Morango
+</div>
 
-    </article>
 
+<p>
 
-    <article class="item">
+  O clássico que é puro desejo proibido.
+  Uma quantidade farta de morangos
+  de verdade, envolvidos em um delicioso
+  creme de Ninho e chocolate meio amargo
+  por cima. Pecar nunca foi tão gostoso...
+  Vai resistir?
 
-      <button class="item-head" onclick="toggleItem(this)">
-        <span class="emoji">🍋</span>
-        <span class="name">Acidez Proibida</span>
-        <span class="price">R$ 18</span>
-        <span class="arrow">⌄</span>
-      </button>
+</p>
 
-      <div class="details">
 
-        <div class="flavor">Limão</div>
+<button
+  class="add"
+  onclick="addItem('Luxúria Vermelha',16)"
+>
 
-        <p>
-          Doce demais? Jamais!
-          Creme de Ninho, limão na medida certa
-          e uma cobertura de ganache de chocolate
-          meio amargo para completar esse pecado.
-          Azedinho, cremoso e impossível de ignorar.
-        </p>
+  COMETER ESTE PECADO
 
-        <button
-          class="add"
-          onclick="addItem('Acidez Proibida',18)"
-        >
-          COMETER ESTE PECADO
-        </button>
+</button>
 
-      </div>
 
-    </article>
+</div>
 
+</article>
 
-    <article class="item">
 
-      <button class="item-head" onclick="toggleItem(this)">
-        <span class="emoji">❤️</span>
-        <span class="name">Indecisão Pecaminosa</span>
-        <span class="price">R$ 18</span>
-        <span class="arrow">⌄</span>
-      </button>
+<article class="item">
 
-      <div class="details">
 
-        <div class="flavor">2 Amores</div>
+<button
+  class="item-head"
+  onclick="toggleItem(this)"
+>
 
-        <p>
-          Por que escolher um quando você pode ter os dois?
-          Uma combinação irresistível de dois sabores em um
-          único pote, com creme de Ninho e muito chocolate.
-        </p>
+<span class="emoji">
+  💰
+</span>
 
-        <button
-          class="add"
-          onclick="addItem('Indecisão Pecaminosa',18)"
-        >
-          COMETER ESTE PECADO
-        </button>
+<span class="name">
+  Avareza de Amendoim
+</span>
 
-      </div>
+<span class="price">
+  R$ 16
+</span>
 
-    </article>
+<span class="arrow">
+  ⌄
+</span>
 
-  </section>
+</button>
 
 
-  <section id="tortos" class="section">
+<div class="details">
 
-    <h2>🥧 Pecados Tortos</h2>
 
-    <p class="sub">
-      Eles não são bombons. São tortinhas.
-      Mas te fazem pecar do mesmo jeito
-    </p>
+<div class="flavor">
+  Amendoim
+</div>
 
 
-    <article class="item">
+<p>
 
-      <button class="item-head" onclick="toggleItem(this)">
-        <span class="emoji">🍫</span>
-        <span class="name">Tentação Kinder</span>
-        <span class="price">R$ 20</span>
-        <span class="arrow">⌄</span>
-      </button>
+  Economizar dinheiro? Talvez.
+  Economizar doce? Jamais!
+  Uma dose daquelas de paçoca
+  na base cremosa de Ninho
+  e finalizado por cima com ganache
+  de chocolate meio amargo.
 
-      <div class="details">
+</p>
 
-        <div class="flavor">Kinder</div>
 
-        <p>
-          Alguns pecados simplesmente não precisam de explicação.
-          Uma tortinha cremosa, recheada com muito sabor de Kinder,
-          creme de Ninho e uma cobertura de chocolate irresistível.
-        </p>
+<button
+  class="add"
+  onclick="addItem('Avareza de Amendoim',16)"
+>
 
-        <button
-          class="add"
-          onclick="addItem('Tentação Kinder',20)"
-        >
-          COMETER ESTE PECADO
-        </button>
+  COMETER ESTE PECADO
 
-      </div>
+</button>
 
-    </article>
 
+</div>
 
-    <article class="item">
+</article>
 
-      <button class="item-head" onclick="toggleItem(this)">
-        <span class="emoji">🍌</span>
-        <span class="name">Queda de Banoffe</span>
-        <span class="price">R$ 20</span>
-        <span class="arrow">⌄</span>
-      </button>
 
-      <div class="details">
+<article class="item">
 
-        <div class="flavor">Banoffe</div>
 
-        <p>
-          Doce de leite cremoso, banana fresquinha,
-          uma camada leve de chantilly e raspas de chocolate
-          por cima para deixar esse pecado ainda mais sensual.
-          Simples, cremoso e perigosamente irresistível.
-        </p>
+<button
+  class="item-head"
+  onclick="toggleItem(this)"
+>
 
-        <button
-          class="add"
-          onclick="addItem('Queda de Banoffe',20)"
-        >
-          COMETER ESTE PECADO
-        </button>
+<span class="emoji">
+  💚
+</span>
 
-      </div>
+<span class="name">
+  Inveja Verde
+</span>
 
-    </article>
+<span class="price">
+  R$ 16
+</span>
 
+<span class="arrow">
+  ⌄
+</span>
 
-    <article class="item">
+</button>
 
-      <button class="item-head" onclick="toggleItem(this)">
-        <span class="emoji">🍪</span>
-        <span class="name">Desejo Negro</span>
-        <span class="price">R$ 20</span>
-        <span class="arrow">⌄</span>
-      </button>
 
-      <div class="details">
+<div class="details">
 
-        <div class="flavor">Bolacha Negresco</div>
 
-        <p>
-          Uma tortinha para quem não brinca em serviço:
-          bolacha Negresco, creme de Ninho e uma cobertura
-          de ganache de chocolate meio amargo.
-          Intensa, cremosa e com aquele sabor de Negresco
-          que transforma um simples desejo em pecado.
-        </p>
+<div class="flavor">
+  Uva
+</div>
 
-        <button
-          class="add"
-          onclick="addItem('Desejo Negro',20)"
-        >
-          COMETER ESTE PECADO
-        </button>
 
-      </div>
+<p>
 
-    </article>
+  Quem não pedir vai chorar no cantinho!
+  Uvas verdes sem semente,
+  crocantes e docinhas, abraçadas
+  por um incrível creme de Ninho
+  e finalizadas por cima com ganache
+  de chocolate meio amargo.
 
-  </section>
+</p>
 
 
-  <div class="bottom-note">
-    <div class="ml-badge">250 ML — CADA POTE</div>
+<button
+  class="add"
+  onclick="addItem('Inveja Verde',16)"
+>
+
+  COMETER ESTE PECADO
+
+</button>
+
+
+</div>
+
+</article>
+
+
+<article class="item">
+
+
+<button
+  class="item-head"
+  onclick="toggleItem(this)"
+>
+
+<span class="emoji">
+  🍫
+</span>
+
+<span class="name">
+  Gula de Chocolate
+</span>
+
+<span class="price">
+  R$ 16
+</span>
+
+<span class="arrow">
+  ⌄
+</span>
+
+</button>
+
+
+<div class="details">
+
+
+<div class="flavor">
+  Chocolate
+</div>
+
+
+<p>
+
+  Se é pecado, que seja dos grandes!
+  Creme de Ninho, muito chocolate
+  e uma cobertura intensa de ganache
+  meio amargo. Cremoso, chocolatudo
+  e completamente sem moderação.
+
+</p>
+
+
+<button
+  class="add"
+  onclick="addItem('Gula de Chocolate',16)"
+>
+
+  COMETER ESTE PECADO
+
+</button>
+
+
+</div>
+
+</article>
+
+
+</section>
+
+
+<section
+  id="perdoaveis"
+  class="section"
+>
+
+
+<h2>
+  ✨ Pecados Perdoáveis
+</h2>
+
+
+<p class="sub">
+  Porque alguns pecados
+  a gente consegue justificar.
+</p>
+
+
+<article class="item">
+
+
+<button
+  class="item-head"
+  onclick="toggleItem(this)"
+>
+
+<span class="emoji">
+  💛
+</span>
+
+<span class="name">
+  Amarelo do Prazer
+</span>
+
+<span class="price">
+  R$ 18
+</span>
+
+<span class="arrow">
+  ⌄
+</span>
+
+</button>
+
+
+<div class="details">
+
+
+<div class="flavor">
+  Maracujá
+</div>
+
+
+<p>
+
+  Um pecado de aparência inocente,
+  mas só de aparência...
+  Creme suave de Ninho,
+  uma camada generosa de maracujá
+  e o equilíbrio perfeito entre o doce
+  e aquele azedinho irresistível.
+
+</p>
+
+
+<button
+  class="add"
+  onclick="addItem('Amarelo do Prazer',18)"
+>
+
+  COMETER ESTE PECADO
+
+</button>
+
+
+</div>
+
+</article>
+
+
+<article class="item">
+
+
+<button
+  class="item-head"
+  onclick="toggleItem(this)"
+>
+
+<span class="emoji">
+  🍋
+</span>
+
+<span class="name">
+  Acidez Proibida
+</span>
+
+<span class="price">
+  R$ 18
+</span>
+
+<span class="arrow">
+  ⌄
+</span>
+
+</button>
+
+
+<div class="details">
+
+
+<div class="flavor">
+  Limão
+</div>
+
+
+<p>
+
+  Doce demais? Jamais!
+  Creme de Ninho, limão na medida certa
+  e uma cobertura de ganache
+  de chocolate meio amargo
+  para completar esse pecado.
+
+</p>
+
+
+<button
+  class="add"
+  onclick="addItem('Acidez Proibida',18)"
+>
+
+  COMETER ESTE PECADO
+
+</button>
+
+
+</div>
+
+</article>
+
+
+<article class="item">
+
+
+<button
+  class="item-head"
+  onclick="toggleItem(this)"
+>
+
+<span class="emoji">
+  ❤️
+</span>
+
+<span class="name">
+  Indecisão Pecaminosa
+</span>
+
+<span class="price">
+  R$ 18
+</span>
+
+<span class="arrow">
+  ⌄
+</span>
+
+</button>
+
+
+<div class="details">
+
+
+<div class="flavor">
+  2 Amores
+</div>
+
+
+<p>
+
+  Por que escolher um quando
+  você pode ter os dois?
+  Uma combinação irresistível
+  de dois sabores em um único pote,
+  com creme de Ninho e muito chocolate.
+
+</p>
+
+
+<button
+  class="add"
+  onclick="addItem('Indecisão Pecaminosa',18)"
+>
+
+  COMETER ESTE PECADO
+
+</button>
+
+
+</div>
+
+</article>
+
+
+</section>
+
+
+<section
+  id="tortos"
+  class="section"
+>
+
+
+<h2>
+  🥧 Pecados Tortos
+</h2>
+
+
+<p class="sub">
+
+  Eles não são bombons. São tortinhas.
+  Mas te fazem pecar do mesmo jeito.
+
+</p>
+
+
+<article class="item">
+
+
+<button
+  class="item-head"
+  onclick="toggleItem(this)"
+>
+
+<span class="emoji">
+  🍫
+</span>
+
+<span class="name">
+  Tentação Kinder
+</span>
+
+<span class="price">
+  R$ 20
+</span>
+
+<span class="arrow">
+  ⌄
+</span>
+
+</button>
+
+
+<div class="details">
+
+
+<div class="flavor">
+  Kinder
+</div>
+
+
+<p>
+
+  Alguns pecados simplesmente
+  não precisam de explicação.
+  Uma tortinha cremosa, recheada
+  com muito sabor de Kinder,
+  creme de Ninho e uma cobertura
+  de chocolate irresistível.
+
+</p>
+
+
+<button
+  class="add"
+  onclick="addItem('Tentação Kinder',20)"
+>
+
+  COMETER ESTE PECADO
+
+</button>
+
+
+</div>
+
+</article>
+
+
+<article class="item">
+
+
+<button
+  class="item-head"
+  onclick="toggleItem(this)"
+>
+
+<span class="emoji">
+  🍌
+</span>
+
+<span class="name">
+  Queda de Banoffe
+</span>
+
+<span class="price">
+  R$ 20
+</span>
+
+<span class="arrow">
+  ⌄
+</span>
+
+</button>
+
+
+<div class="details">
+
+
+<div class="flavor">
+  Banoffe
+</div>
+
+
+<p>
+
+  Doce de leite cremoso,
+  banana fresquinha,
+  uma camada leve de chantilly
+  e raspas de chocolate por cima
+  para deixar esse pecado ainda
+  mais sensual.
+
+</p>
+
+
+<button
+  class="add"
+  onclick="addItem('Queda de Banoffe',20)"
+>
+
+  COMETER ESTE PECADO
+
+</button>
+
+
+</div>
+
+</article>
+
+
+<article class="item">
+
+
+<button
+  class="item-head"
+  onclick="toggleItem(this)"
+>
+
+<span class="emoji">
+  🍪
+</span>
+
+<span class="name">
+  Desejo Negro
+</span>
+
+<span class="price">
+  R$ 20
+</span>
+
+<span class="arrow">
+  ⌄
+</span>
+
+</button>
+
+
+<div class="details">
+
+
+<div class="flavor">
+  Bolacha Negresco
+</div>
+
+
+<p>
+
+  Uma tortinha para quem
+  não brinca em serviço:
+  bolacha Negresco, creme de Ninho
+  e uma cobertura de ganache
+  de chocolate meio amargo.
+
+</p>
+
+
+<button
+  class="add"
+  onclick="addItem('Desejo Negro',20)"
+>
+
+  COMETER ESTE PECADO
+
+</button>
+
+
+</div>
+
+</article>
+
+
+</section>
+
+
+<div class="bottom-note">
+
+  <div class="ml-badge">
+    250 ML — CADA POTE
   </div>
 
 </div>
 
 
-<div class="cart" onclick="openCart()">
+</div>
 
-  <div>🛒</div>
 
-  <div class="cart-info">
-    <b id="cartCount">0 pecados</b>
-    <small>Toque para revisar sua confissão</small>
-  </div>
+<div
+  class="cart"
+  onclick="openCart()"
+>
 
-  <div class="cart-total" id="cartTotal">
-    R$ 0,00
-  </div>
+
+<div>
+  🛒
+</div>
+
+
+<div class="cart-info">
+
+  <b id="cartCount">
+    0 pecados
+  </b>
+
+  <small>
+    Toque para revisar sua confissão
+  </small>
 
 </div>
 
 
-<div id="modal" class="modal">
+<div
+  class="cart-total"
+  id="cartTotal"
+>
 
-  <div class="box">
+  R$ 0,00
 
-    <button class="close" onclick="closeCart()">
-      Fechar
-    </button>
+</div>
 
-    <h2>
-      😈 Confissão #<span id="modalNumber">48</span>
-    </h2>
 
-    <div class="order-sub">
-      Pecado do <span id="modalName">cliente</span>
-    </div>
+</div>
 
-    <div id="cartRows"></div>
 
-    <div style="display:flex;justify-content:space-between;margin-top:17px;font-size:18px">
-      <b>Total da sentença</b>
-      <b id="modalTotal">R$ 0,00</b>
-    </div>
+<div
+  id="modal"
+  class="modal"
+>
 
-    <button
-      id="orderButton"
-      class="order"
-      onclick="commitSin()"
-    >
-      PECAR 😈
-    </button>
 
-    <p style="font-size:11px;color:#9f8f92;text-align:center">
-      Seu pedido será enviado para o WhatsApp da Pecado no Pote.
-    </p>
+<div class="box">
 
-  </div>
+
+<button
+  class="close"
+  onclick="closeCart()"
+>
+
+  Fechar
+
+</button>
+
+
+<h2>
+
+  😈 Confissão #
+  <span id="modalNumber">
+    56
+  </span>
+
+</h2>
+
+
+<div class="order-sub">
+
+  Pecado do
+  <span id="modalName">
+    cliente
+  </span>
+
+</div>
+
+
+<div id="cartRows"></div>
+
+
+<div
+  style="
+    display:flex;
+    justify-content:space-between;
+    margin-top:17px;
+    font-size:18px
+  "
+>
+
+<b>
+  Total da sentença
+</b>
+
+<b id="modalTotal">
+  R$ 0,00
+</b>
+
+</div>
+
+
+<button
+  id="orderButton"
+  class="order"
+  onclick="commitSin()"
+>
+
+  PECAR 😈
+
+</button>
+
+
+<p
+  style="
+    font-size:11px;
+    color:#9f8f92;
+    text-align:center
+  "
+>
+
+  Seu pedido será enviado
+  para o WhatsApp da Pecado no Pote.
+
+</p>
+
+
+</div>
 
 </div>
 
 
 <script>
 
-const COUNTER_API_URL = "";
 
-const WHATSAPP = "5541991623225";
+/* =========================================================
+   CONFIGURAÇÕES
+========================================================= */
+
+
+const COUNTER_API_URL =
+  "https://script.google.com/macros/s/AKfycbx1foLq5ZUK5Ow5LFCNjy__eJH0rFI4E8GW_YLpXus5UqL4VzWv34mn-fK7U2bw8l0wSg/exec";
+
+
+const WHATSAPP =
+  "5541991623225";
+
+
+const NUMERO_INICIAL =
+  56;
+
 
 let cart = {};
 
-let confessionNumber = 48;
+
+let confessionNumber =
+  NUMERO_INICIAL;
 
 
-function money(v){
-  return "R$ "+
-    Number(v)
+/* =========================================================
+   FUNÇÕES BÁSICAS
+========================================================= */
+
+
+function money(value){
+
+  return (
+    "R$ " +
+    Number(value)
       .toFixed(2)
-      .replace(".",",");
+      .replace(".",",")
+  );
+
 }
 
 
-function setNumber(n){
+function setNumber(number){
 
-  confessionNumber = Number(n) || 48;
+  confessionNumber =
+    Number(number) ||
+    NUMERO_INICIAL;
 
-  document.getElementById("modalNumber").textContent =
-    confessionNumber;
 
-  document.getElementById("confNumber").textContent =
-    confessionNumber;
+  document
+    .getElementById("modalNumber")
+    .textContent =
+      confessionNumber;
+
+
+  document
+    .getElementById("confNumber")
+    .textContent =
+      confessionNumber;
+
 }
 
 
-function showTab(id,btn){
-
-  document.querySelectorAll(".section")
-    .forEach(x=>x.classList.remove("active"));
-
-  const section=document.getElementById(id);
-
-  if(!section)return;
-
-  section.classList.add("active");
-
-  document.querySelectorAll(".tab")
-    .forEach(x=>x.classList.remove("active"));
-
-  if(btn)btn.classList.add("active");
-
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
-  });
-}
+/* =========================================================
+   ABAS
+========================================================= */
 
 
-function toggleItem(btn){
+function showTab(id,button){
 
-  const item=btn.closest(".item");
+  document
+    .querySelectorAll(".section")
+    .forEach(section => {
 
-  if(!item)return;
+      section.classList.remove(
+        "active"
+      );
 
-  document.querySelectorAll(".item")
-    .forEach(x=>{
-      if(x!==item)
-        x.classList.remove("open");
     });
 
-  item.classList.toggle("open");
+
+  const section =
+    document.getElementById(id);
+
+
+  if(!section){
+    return;
+  }
+
+
+  section.classList.add(
+    "active"
+  );
+
+
+  document
+    .querySelectorAll(".tab")
+    .forEach(tab => {
+
+      tab.classList.remove(
+        "active"
+      );
+
+    });
+
+
+  if(button){
+
+    button.classList.add(
+      "active"
+    );
+
+  }
+
+
+  window.scrollTo({
+
+    top:0,
+
+    behavior:"smooth"
+
+  });
+
 }
+
+
+/* =========================================================
+   ABRIR / FECHAR DESCRIÇÃO
+========================================================= */
+
+
+function toggleItem(button){
+
+  const item =
+    button.closest(".item");
+
+
+  if(!item){
+    return;
+  }
+
+
+  document
+    .querySelectorAll(".item")
+    .forEach(other => {
+
+      if(other !== item){
+
+        other.classList.remove(
+          "open"
+        );
+
+      }
+
+    });
+
+
+  item.classList.toggle(
+    "open"
+  );
+
+}
+
+
+/* =========================================================
+   CARRINHO
+========================================================= */
 
 
 function addItem(name,price){
 
   if(!cart[name]){
-    cart[name]={
+
+    cart[name] = {
+
       price:price,
+
       qty:0
+
     };
+
   }
+
 
   cart[name].qty++;
 
+
   updateCart();
+
 }
 
 
 function updateCart(){
 
-  let c=0;
-  let t=0;
+  let quantity = 0;
 
-  Object.values(cart).forEach(x=>{
-    c+=x.qty;
-    t+=x.qty*x.price;
-  });
+  let total = 0;
 
-  document.getElementById("cartCount").textContent =
-    c+" "+(c===1?"pecado":"pecados");
 
-  document.getElementById("cartTotal").textContent =
-    money(t);
+  Object
+    .values(cart)
+    .forEach(item => {
+
+      quantity +=
+        item.qty;
+
+      total +=
+        item.qty *
+        item.price;
+
+    });
+
+
+  document
+    .getElementById("cartCount")
+    .textContent =
+      quantity +
+      " " +
+      (
+        quantity === 1
+          ? "pecado"
+          : "pecados"
+      );
+
+
+  document
+    .getElementById("cartTotal")
+    .textContent =
+      money(total);
+
 }
 
 
 function openCart(){
 
-  const n=
-    (document.getElementById("customerName").value||
-    "cliente").trim();
+  const name =
+    (
+      document
+        .getElementById(
+          "customerName"
+        )
+        .value ||
+      "cliente"
+    ).trim();
 
-  document.getElementById("modalName").textContent=n;
 
-  document.getElementById("modalNumber").textContent=
-    confessionNumber;
+  document
+    .getElementById(
+      "modalName"
+    )
+    .textContent =
+      name;
+
 
   renderCart();
 
-  document.getElementById("modal").classList.add("show");
+
+  document
+    .getElementById(
+      "modal"
+    )
+    .classList.add(
+      "show"
+    );
+
 }
 
 
 function closeCart(){
 
-  document.getElementById("modal")
-    .classList.remove("show");
+  document
+    .getElementById(
+      "modal"
+    )
+    .classList.remove(
+      "show"
+    );
+
 }
 
 
 function renderCart(){
 
-  const rows=document.getElementById("cartRows");
+  const rows =
+    document.getElementById(
+      "cartRows"
+    );
 
-  rows.innerHTML="";
 
-  let total=0;
+  rows.innerHTML =
+    "";
 
-  const entries=Object.entries(cart);
+
+  let total = 0;
+
+
+  const entries =
+    Object.entries(cart);
+
 
   if(!entries.length){
 
-    rows.innerHTML=
-      '<div class="empty">'+
-      'Seu pote está vazio. Escolha um pecado acima. 😈'+
+    rows.innerHTML =
+      '<div class="empty">' +
+      'Seu pote está vazio. ' +
+      'Escolha um pecado acima. 😈' +
       '</div>';
 
   }
 
-  entries.forEach(([name,x])=>{
 
-    total+=x.qty*x.price;
+  entries.forEach(
+    ([name,item]) => {
 
-    const row=document.createElement("div");
+      total +=
+        item.qty *
+        item.price;
 
-    row.className="cart-row";
 
-    row.innerHTML=
-      '<div class="desc">'+
-      '<b>'+name+'</b><br>'+
-      '<small>'+money(x.price)+' cada</small>'+
-      '</div>'+
-      '<div class="qty">'+
-      '<button onclick="changeQty('+JSON.stringify(name)+',-1)">−</button>'+
-      '<b>'+x.qty+'</b>'+
-      '<button onclick="changeQty('+JSON.stringify(name)+',1)">+</button>'+
-      '</div>';
+      const row =
+        document.createElement(
+          "div"
+        );
 
-    rows.appendChild(row);
 
-  });
+      row.className =
+        "cart-row";
 
-  document.getElementById("modalTotal").textContent=
-    money(total);
+
+      row.innerHTML =
+
+        '<div class="desc">' +
+
+          '<b>' +
+          escapeHtml(name) +
+          '</b><br>' +
+
+          '<small>' +
+          money(item.price) +
+          ' cada</small>' +
+
+        '</div>' +
+
+        '<div class="qty">' +
+
+          '<button ' +
+          'onclick="changeQty(' +
+          JSON.stringify(name) +
+          ',-1)">−</button>' +
+
+          '<b>' +
+          item.qty +
+          '</b>' +
+
+          '<button ' +
+          'onclick="changeQty(' +
+          JSON.stringify(name) +
+          ',1)">+</button>' +
+
+        '</div>';
+
+
+      rows.appendChild(
+        row
+      );
+
+    }
+  );
+
+
+  document
+    .getElementById(
+      "modalTotal"
+    )
+    .textContent =
+      money(total);
+
 }
 
 
-function changeQty(name,n){
+function changeQty(name,change){
 
-  if(!cart[name])return;
+  if(!cart[name]){
+    return;
+  }
 
-  cart[name].qty+=n;
 
-  if(cart[name].qty<=0)
+  cart[name].qty +=
+    change;
+
+
+  if(
+    cart[name].qty <= 0
+  ){
+
     delete cart[name];
+
+  }
+
 
   updateCart();
 
   renderCart();
+
 }
 
 
-async function commitSin(){
+function escapeHtml(text){
 
-  let total=0;
-
-  let lines=[];
-
-  Object.entries(cart).forEach(([name,x])=>{
-
-    total+=x.qty*x.price;
-
-    lines.push(
-      x.qty+
-      "x "+
-      name+
-      " — "+
-      money(x.qty*x.price)
+  return String(text)
+    .replace(
+      /&/g,
+      "&amp;"
+    )
+    .replace(
+      /</g,
+      "&lt;"
+    )
+    .replace(
+      />/g,
+      "&gt;"
+    )
+    .replace(
+      /"/g,
+      "&quot;"
+    )
+    .replace(
+      /'/g,
+      "&#039;"
     );
 
-  });
+}
+
+
+/* =========================================================
+   CONFIRMAR / PECAR
+========================================================= */
+
+
+function commitSin(){
+
+  let total = 0;
+
+  let lines = [];
+
+
+  Object
+    .entries(cart)
+    .forEach(
+      ([name,item]) => {
+
+        total +=
+          item.qty *
+          item.price;
+
+
+        lines.push(
+
+          item.qty +
+          "x " +
+          name +
+          " — " +
+          money(
+            item.qty *
+            item.price
+          )
+
+        );
+
+      }
+    );
+
 
   if(!lines.length){
 
-    alert("Escolha pelo menos um pecado antes de pecar 😈");
-
-    return;
-  }
-
-  const name=
-    (document.getElementById("customerName").value||
-    "Cliente").trim();
-
-  const button=
-    document.getElementById("orderButton");
-
-  button.disabled=true;
-
-  button.textContent="ENVIANDO...";
-
-  try{
-
-    const assigned=confessionNumber;
-
-    const text=
-      "Confissão #"+assigned+
-      "\nPecado do (a) "+name+
-      "\n\nPecados cometidos:\n"+
-      lines.join("\n")+
-      "\n\nTotal da sentença: "+
-      money(total);
-
-    const url=
-      "https://wa.me/"+
-      WHATSAPP+
-      "?text="+
-      encodeURIComponent(text);
-
-    window.open(url,"_blank");
-
-    setNumber(assigned+1);
-
-    cart={};
-
-    updateCart();
-
-    closeCart();
-
-  }catch(e){
-
     alert(
-      "Não foi possível enviar a confissão agora."
+      "Escolha pelo menos um pecado antes de pecar 😈"
     );
 
-  }finally{
-
-    button.disabled=false;
-
-    button.textContent="PECAR 😈";
+    return;
 
   }
+
+
+  const name =
+    (
+      document
+        .getElementById(
+          "customerName"
+        )
+        .value ||
+      "Cliente"
+    ).trim();
+
+
+  const button =
+    document
+      .getElementById(
+        "orderButton"
+      );
+
+
+  button.disabled =
+    true;
+
+
+  button.textContent =
+    "CONFIRMANDO...";
+
+
+  /*
+   * Abre a janela durante o clique.
+   * Depois que o número chegar,
+   * direcionaremos essa mesma janela
+   * para o WhatsApp.
+   */
+
+  const whatsappWindow =
+    window.open(
+      "about:blank",
+      "_blank"
+    );
+
+
+  if(!whatsappWindow){
+
+    button.disabled =
+      false;
+
+    button.textContent =
+      "PECAR 😈";
+
+
+    alert(
+      "O navegador bloqueou a abertura do WhatsApp. Permita pop-ups para este site e tente novamente."
+    );
+
+    return;
+
+  }
+
+
+  /*
+   * Nome exclusivo da função JSONP.
+   */
+
+  const callbackName =
+    "pecadoCallback_" +
+    Date.now() +
+    "_" +
+    Math.random()
+      .toString(36)
+      .substring(2);
+
+
+  /*
+   * Função chamada pelo Google Apps Script.
+   */
+
+  window[callbackName] =
+    function(response){
+
+      try{
+
+        if(
+          !response ||
+          response.sucesso !== true ||
+          !Number.isFinite(
+            Number(response.numero)
+          )
+        ){
+
+          throw new Error(
+            "Número inválido."
+          );
+
+        }
+
+
+        const numero =
+          Number(
+            response.numero
+          );
+
+
+        /*
+         * Monta a mensagem.
+         */
+
+        const message =
+
+          "Confissão #" +
+          numero +
+
+          "\nPecado do " +
+          name +
+
+          "\n\nPecados cometidos:\n" +
+
+          lines.join(
+            "\n"
+          ) +
+
+          "\n\nTotal da sentença: " +
+
+          money(total);
+
+
+        const whatsappUrl =
+
+          "https://wa.me/" +
+
+          WHATSAPP +
+
+          "?text=" +
+
+          encodeURIComponent(
+            message
+          );
+
+
+        /*
+         * Envia para o WhatsApp.
+         */
+
+        whatsappWindow.location.href =
+          whatsappUrl;
+
+
+        /*
+         * Mostra o próximo número
+         * visualmente no cardápio.
+         */
+
+        setNumber(
+          numero + 1
+        );
+
+
+        /*
+         * Limpa o carrinho.
+         */
+
+        cart = {};
+
+
+        updateCart();
+
+
+        closeCart();
+
+
+      }
+      catch(error){
+
+        whatsappWindow.close();
+
+
+        alert(
+          "Não foi possível confirmar o pedido. Tente novamente."
+        );
+
+      }
+
+
+      button.disabled =
+        false;
+
+
+      button.textContent =
+        "PECAR 😈";
+
+
+      delete window[
+        callbackName
+      ];
+
+    };
+
+
+  /*
+   * Cria chamada JSONP.
+   */
+
+  const script =
+    document.createElement(
+      "script"
+    );
+
+
+  script.src =
+    COUNTER_API_URL +
+    "?callback=" +
+    encodeURIComponent(
+      callbackName
+    );
+
+
+  script.onerror =
+    function(){
+
+      whatsappWindow.close();
+
+
+      delete window[
+        callbackName
+      ];
+
+
+      button.disabled =
+        false;
+
+
+      button.textContent =
+        "PECAR 😈";
+
+
+      alert(
+        "Não foi possível conectar ao contador de pedidos. Verifique sua conexão e tente novamente."
+      );
+
+    };
+
+
+  document
+    .body
+    .appendChild(
+      script
+    );
+
+
+  /*
+   * Segurança:
+   * se o servidor não responder,
+   * não deixa o botão travado para sempre.
+   */
+
+  setTimeout(
+    function(){
+
+      if(
+        window[
+          callbackName
+        ]
+      ){
+
+        /*
+         * Não incrementamos nada no cliente.
+         * O número só é considerado reservado
+         * quando o Google responder.
+         */
+
+        delete window[
+          callbackName
+        ];
+
+
+        if(
+          whatsappWindow &&
+          !whatsappWindow.closed
+        ){
+
+          whatsappWindow.close();
+
+        }
+
+
+        button.disabled =
+          false;
+
+
+        button.textContent =
+          "PECAR 😈";
+
+
+        alert(
+          "O contador demorou para responder. Nenhum pedido foi enviado. Tente novamente."
+        );
+
+      }
+
+    },
+    15000
+  );
+
 }
 
 
+/* =========================================================
+   NOME DO CLIENTE
+========================================================= */
+
+
 document
-  .getElementById("customerName")
-  .addEventListener("input",e=>{
+  .getElementById(
+    "customerName"
+  )
+  .addEventListener(
+    "input",
+    function(event){
 
-    const n=
-      e.target.value.trim()||
-      "seu nome";
-
-    document.getElementById("namePreview")
-      .textContent=n;
-
-    document.getElementById("modalName")
-      .textContent=n;
-
-  });
+      const name =
+        event.target.value.trim() ||
+        "seu nome";
 
 
-setNumber(confessionNumber);
+      document
+        .getElementById(
+          "namePreview"
+        )
+        .textContent =
+          name;
+
+
+      document
+        .getElementById(
+          "modalName"
+        )
+        .textContent =
+          name;
+
+    }
+  );
+
+
+/* =========================================================
+   INICIALIZAÇÃO
+========================================================= */
+
+
+setNumber(
+  NUMERO_INICIAL
+);
+
 
 updateCart();
 
 
-/* INSTALAÇÃO PWA */
+/* =========================================================
+   INSTALAÇÃO PWA
+========================================================= */
 
-let deferredInstallPrompt=null;
 
-const installBtn=
-  document.getElementById("installApp");
+let deferredInstallPrompt =
+  null;
+
+
+const installButton =
+  document.getElementById(
+    "installApp"
+  );
 
 
 window.addEventListener(
   "beforeinstallprompt",
-  event=>{
+  function(event){
 
     event.preventDefault();
 
-    deferredInstallPrompt=event;
+    deferredInstallPrompt =
+      event;
 
-    if(installBtn)
-      installBtn.classList.add("show");
+
+    if(installButton){
+
+      installButton.classList.add(
+        "show"
+      );
+
+    }
 
   }
 );
 
 
-if(installBtn){
+if(installButton){
 
-  installBtn.addEventListener(
+  installButton.addEventListener(
     "click",
-    async()=>{
+    async function(){
 
-      if(!deferredInstallPrompt)
+      if(
+        !deferredInstallPrompt
+      ){
+
         return;
 
-      deferredInstallPrompt.prompt();
+      }
 
-      await deferredInstallPrompt.userChoice;
 
-      deferredInstallPrompt=null;
+      deferredInstallPrompt
+        .prompt();
 
-      installBtn.classList.remove("show");
+
+      await
+        deferredInstallPrompt
+          .userChoice;
+
+
+      deferredInstallPrompt =
+        null;
+
+
+      installButton.classList.remove(
+        "show"
+      );
 
     }
   );
@@ -1315,30 +2784,43 @@ if(installBtn){
 
 window.addEventListener(
   "appinstalled",
-  ()=>{
+  function(){
 
-    if(installBtn)
-      installBtn.classList.remove("show");
+    if(installButton){
+
+      installButton.classList.remove(
+        "show"
+      );
+
+    }
 
   }
 );
 
 
-/* SERVICE WORKER */
+/* =========================================================
+   SERVICE WORKER
+========================================================= */
+
 
 if(
   "serviceWorker" in navigator &&
   (
-    location.protocol==="https:" ||
-    location.hostname==="localhost"
+    location.protocol === "https:" ||
+    location.hostname === "localhost"
   )
 ){
 
   navigator.serviceWorker
-    .register("sw.js")
-    .catch(()=>{});
+    .register(
+      "sw.js"
+    )
+    .catch(
+      function(){}
+    );
 
 }
+
 
 </script>
 
@@ -1350,9 +2832,12 @@ if(
   rel="noopener"
   aria-label="Falar com a Pecado no Pote pelo WhatsApp"
 >
+
   💬 WhatsApp
+
 </a>
 
 
 </body>
+
 </html>
